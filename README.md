@@ -64,6 +64,7 @@ Once `docker compose up -d --build` is running, services are available at:
 
 **| Service | Container Name | URL / Endpoint | Notes |**
 | :--- | :--- | :--- | :--- |
+
 | **Streamlit UI** | `local_streamlit_service` | `http://localhost:8501` | Main user interface; forwards auth via `forward_keycloak.py` and calls `app` at `http://app:8000` |
 | **Agent API (`app`)** | `local_app_service` | `http://localhost:8000` | Python agent backend (`app/main.py`) connected to Ollama, PostgreSQL, Redis, Keycloak, and MCP |
 | **Keycloak** | `local_keycloak_service` | `http://localhost:8080` | Identity provider (`master` realm) backed by PostgreSQL (`keycloak` database) |
