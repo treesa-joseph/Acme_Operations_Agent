@@ -63,15 +63,23 @@ URL: http://localhost:8080   Username: ${KEYCLOAK_ADMIN}   Password: ${KEYCLOAK_
 Once `docker compose up -d --build` is running, services are available at:
 
 **| Service | Container Name | URL / Endpoint | Notes |**
+
 | :--- | :--- | :--- | :--- |
 
 | **Streamlit UI** | `local_streamlit_service` | `http://localhost:8501` | Main user interface; forwards auth via `forward_keycloak.py` and calls `app` at `http://app:8000` |
+
 | **Agent API (`app`)** | `local_app_service` | `http://localhost:8000` | Python agent backend (`app/main.py`) connected to Ollama, PostgreSQL, Redis, Keycloak, and MCP |
+
 | **Keycloak** | `local_keycloak_service` | `http://localhost:8080` | Identity provider (`master` realm) backed by PostgreSQL (`keycloak` database) |
+
 | **MCP Server** | `local_mcp_service` | `http://localhost:3001` (host) / `http://mcp-server:3000/sse` (internal) | Node.js MCP server (`mcp-server/index.js`) exposing `/sse` and querying PostgreSQL |
+
 | **Ollama (Phi-4)** | Host / Local process | `http://localhost:11434` (`http://host.docker.internal:11434` from containers) | Serves local `phi4` model |
+
 | **PostgreSQL** | `local_postgres_service` | `localhost:5432` | Initialized with `./postgresql/init.sql`; persisted in `postgres_data` volume |
+
 | **Redis** | `local_redis_service` | `localhost:6379` | Runs with `--appendonly yes`; persisted in `redis_data` volume |
+
 
 ## 5. Project Structure & Role Skills
 ACME/
